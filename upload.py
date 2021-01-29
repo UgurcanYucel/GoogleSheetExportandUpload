@@ -17,13 +17,17 @@ class UploadGoogleSheet:
         self.csvName = csvName
 
     def uploadcsv(self):
-        #open via sheet's name
-        spreadsheet = clientSheet.open(self.sheetName)
-        #select worksheetID
-        sheet = spreadsheet.get_worksheet(self.sheetIndex)
-        #clear sheet for overwrite
-        sheet.clear()
-        with open(self.csvName, 'r') as file_obj:
-            content = file_obj.read().encode('utf-8')
-            clientSheet.import_csv(spreadsheet.id, data=content)
+        try:
+            #open via sheet's name
+            spreadsheet = clientSheet.open(self.sheetName)
+            #select worksheetID
+            sheet = spreadsheet.get_worksheet(self.sheetIndex)
+            #clear sheet for overwrite
+            sheet.clear()
+            with open(self.csvName, 'r') as file_obj:
+                content = file_obj.read().encode('utf-8')
+                clientSheet.import_csv(spreadsheet.id, data=content)
+            return 'completed'
+        except Exception as e:
+            return str(e)
 

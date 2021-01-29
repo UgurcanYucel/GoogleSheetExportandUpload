@@ -20,8 +20,11 @@ class ExportGoogleSheet:
 
     def GoogleSheetExport(self):
         try:
+            # open via sheet's name
             sheet = clientSheet.open(self.sheetName).get_worksheet(self.sheetIndex)
+            #export data
             data = sheet.get_all_records()
+
             dataFrame = pd.DataFrame(data)
             return dataFrame
         except Exception as e:

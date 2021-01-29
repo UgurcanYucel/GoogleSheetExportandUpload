@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     #upload data
     objectUpload = upload.UploadGoogleSheet("<sheetName>", <sheetIndex>,"<csvName>")
-    dataFrame = objectUpload.uploadcsv()
-    print(dataFrame)
+    Status = objectUpload.uploadcsv()
+    print(Status)
 
 
